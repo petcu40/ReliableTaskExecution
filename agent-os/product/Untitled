@@ -1,0 +1,26 @@
+  1. Single vs. separate specs: Should this spec cover all three core features together (Leader Election, Configurable Polling, Configurable Task Interval) as a single cohesive implementation, or break them into separate specs? => Separate specs
+  2. Lock timeout vs. task duration: The mission shows a 5-minute lock timeout with 10-minute task intervals. If a task runs longer than 5 minutes, its lock could be reclaimed causing duplicate execution. Should the default lock timeout be longer than expected max task duration, or should we implement a heartbeat mechanism to extend locks? => heartbeat extending locks. Actually, change the lock timeout to 2 minutes. Every 30 seconds, the lock should be extending to cover the next 2 minutes.
+  3. Single vs. multiple job types: Should the initial implementation support just one job type (one row in Jobs table) with multiple workers competing, or design for multiple different job types from the start (e.g., "SendEmailDigest", "CleanupExpiredSessions")? => Single job type, actually single job instance, being executed every 10 minutes.
+
+  Task Execution Details
+
+  4. Failure behavior: When a task fails (throws exception), should we: (a) release lock immediately, (b) log error, (c) leave NextRunTime unchanged for quick retry? Or should failed tasks have a different retry schedule (e.g., exponential backoff)? => should do all of (a), (b), (c)
+  5. Sample task: Is a simple timestamp logger sufficient as a demo task, or do you have a specific sample task in mind? => The task would do a logging on console (Console.WriteLine)
+
+  Configuration and Setup
+
+  6. Hosting pattern: Should this be implemented as a BackgroundService within the Generic Host pattern (Microsoft.Extensions.Hosting), or a simpler polling loop without hosting infrastructure? => BackgroundService within the generic hosting pattern
+  7. SQL scripts: Should SQL scripts for table creation/seeding be standalone .sql files run manually, or include automation (PowerShell, Azure CLI)? => standoalone sql files but include automation (PowerShell) to create the db resource and cleanup. Parameters: subscription id. Resource group should be the string cristp-reltaskexec, region: west us2
+
+  Scope Boundaries
+
+  8. Out of scope: Are any features explicitly OUT of scope? (e.g., multiple job types, job dependencies, priority queuing, dead-letter handling, admin UI) => yes
+
+  Existing Code
+
+  9. Reusable patterns: Are there existing features in your codebase with similar patterns to reference? (existing .NET projects, config patterns, database access code, prototype code) => no, no prototype code. For reliablility use Polly.
+
+  Visual Assets
+
+  Do you have any additional diagrams or mockups beyond what's in mission.md? If so, place them in:
+  agent-os\specs\2025-12-20-distributed-task-execution\planning\visuals\ => don't have any

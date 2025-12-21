@@ -1,0 +1,23 @@
+task_groups:
+  - name: Azure Infrastructure Setup
+    claude_code_subagent: implementer
+  - name: Database Schema and SQL Scripts
+    claude_code_subagent: implementer
+  - name: .NET Project Setup and Configuration
+    claude_code_subagent: implementer
+  - name: Database Connectivity and Authentication
+    claude_code_subagent: implementer
+  - name: Leader Election and Lock Management
+    claude_code_subagent: implementer
+  - name: Heartbeat Mechanism
+    claude_code_subagent: implementer
+  - name: Task Execution and Scheduling
+    claude_code_subagent: implementer
+  - name: BackgroundService and Polling Loop
+    claude_code_subagent: implementer
+  - name: Dependency Injection and Service Registration
+    claude_code_subagent: implementer
+  - name: Test Review and Gap Analysis
+    claude_code_subagent: implementer
+  - name: Final Validation and Multi-Instance Testing
+    claude_code_subagent: implementation-verifier
