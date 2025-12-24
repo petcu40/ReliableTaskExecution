@@ -35,7 +35,7 @@
       "Bash(dotnet test:*)",
       "Bash(python3:*)",
       "Bash(python:*)",
-      "Bash(cmd /c \"dir C:\\\\Petcu\\\\Experiments\\\\ReliableTaskExecution\\\\src\\\\ReliableTaskExecution.Worker\\\\Services\"\")",
+      "Bash(cmd /c \"dir C:\\\\Petcu\\\\Experiments\\\\ReliableTaskExecution\\\\src\\\\ReliableTaskExecution.Worker\\\\Services\")",
       "Bash(cmd /c dir \"C:\\\\Petcu\\\\Experiments\\\\ReliableTaskExecution\\\\src\\\\ReliableTaskExecution.Worker\\\\Services\")",
       "Bash(Get-ChildItem -Path \"C:\\\\Petcu\\\\Experiments\\\\ReliableTaskExecution\\\\tests\" -Recurse -Filter \"*.cs\")",
       "Bash(Select-Object -ExpandProperty FullName)",
